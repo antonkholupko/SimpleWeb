@@ -1,0 +1,11 @@
+.locale-buttons {
+   position: relative;
+   float: right;
+}
+.message {
+    color:red;
+    font-weight: 600;
+}
+h1 {
+    background-color: #66CDAA;
+}
