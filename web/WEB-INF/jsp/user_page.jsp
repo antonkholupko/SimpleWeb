@@ -19,8 +19,6 @@
     <fmt:message bundle="${loc}" key="local.userPageH1" var="tagH1" />
 </head>
 <body>
-    <jsp:useBean id="user" class="by.epam.task5.entity.User" scope="session"/>
-    <jsp:setProperty name="user" property="login"/>
 
     <h1>
         <c:out value="${tagH1}" />
@@ -28,7 +26,7 @@
 
     <p>
         <c:out value="${messageWelcome}, " />
-        <jsp:getProperty name="user" property="login"/>
+        <c:out value="${sessionScope.login}" />
     </p>
     <form action="Controller" method="post">
         <input type="hidden" name="command" value="logout" />
