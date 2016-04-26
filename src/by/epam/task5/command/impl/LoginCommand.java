@@ -12,7 +12,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 public class LoginCommand implements Command {
 
@@ -27,6 +26,7 @@ public class LoginCommand implements Command {
         Service service = ServiceFactory.getInstance().getService(ServiceName.LOGIN);
         String login = request.getParameter(PARAM_LOGIN);
         String password = request.getParameter(PARAM_PASSWORD);
+        request.getSession(true).setAttribute(PARAM_LOGIN, login);
         try {
             user = service.handleQuery(login, password);
             if (user.isRightLogin() && user.isRightPassword()) {
