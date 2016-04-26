@@ -26,10 +26,10 @@ public class LoginCommand implements Command {
         Service service = ServiceFactory.getInstance().getService(ServiceName.LOGIN);
         String login = request.getParameter(PARAM_LOGIN);
         String password = request.getParameter(PARAM_PASSWORD);
-        request.getSession(true).setAttribute(PARAM_LOGIN, login);
         try {
             user = service.handleQuery(login, password);
             if (user.isRightLogin() && user.isRightPassword()) {
+                request.getSession(true).setAttribute(PARAM_LOGIN, user.getLogin());
                 return PageName.USER_PAGE;
             } else {
                 return PageName.INDEX_PAGE;
